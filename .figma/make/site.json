@@ -1,1 +1,10 @@
-{}
+{
+  "description": "Explore Heartland Festival 2027’s gender and literature theme through a bilingual programme, interactive history, literary analysis, concepts and quizzes.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
