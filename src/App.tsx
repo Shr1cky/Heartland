@@ -1099,8 +1099,8 @@ export default function App() {
             <p>
               {isIbsen
                 ? language === "da"
-                  ? "Nora lever i et ægteskab formet af 1800-tallets lov, økonomi og forventninger. Da hemmeligheden om hendes lån afsløres, må hun vælge mellem rollen og sig selv."
-                  : "Nora lives in a marriage shaped by nineteenth-century law, economy and expectation. When her secret loan is exposed, she must choose between her role and herself."
+                  ? "ora lever i et ægteskab formet af 1800-tallets lov, økonomi og forventninger. Da hemmeligheden om hendes lån afsløres, må hun vælge mellem rollen og sig selv."
+                  : "ora lives in a marriage shaped by nineteenth-century law, economy and expectation. When her secret loan is exposed, she must choose between her role and herself."
                 : language === "da"
                   ? "Fortælleren bliver ordineret ro og forbudt at skrive. Hendes mand Johns medicinske autoritet lukker hende inde i et værelse, hvor tapetet overtager hendes blik."
                   : "The narrator is prescribed rest and forbidden to write. Her husband John’s medical authority confines her to a room where the wallpaper takes over her vision."}
