@@ -68,11 +68,20 @@
   top: 0;
   z-index: 40;
   display: grid;
-  grid-template-columns: 60px 1fr 55px;
+  grid-template-columns: 30px 50px 1fr 55px;
   align-items: center;
   background: color-mix(in srgb, var(--cream) 94%, transparent);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
+}
+.header-back {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--forest) 28%, transparent);
+  border-radius: 50%;
+  color: var(--forest);
 }
 .heartland-mark {
   color: var(--forest);

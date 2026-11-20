@@ -577,7 +577,9 @@ function Icon({ name, size = 20 }: { name: IconName; size?: number }) {
 export default function App() {
   const [lang, setLang] = useState<Lang | null>(null);
   const [page, setPage] = useState<Page>("welcome");
+  const [pageHistory, setPageHistory] = useState<Page[]>([]);
   const [selectedTalk, setSelectedTalk] = useState<number | null>(null);
+  const [talkOrigin, setTalkOrigin] = useState<Page>("programme");
   const [selectedEra, setSelectedEra] = useState(0);
   const [savedTalks, setSavedTalks] = useState<number[]>([]);
   const [savedArticles, setSavedArticles] = useState<string[]>([]);
@@ -592,7 +594,32 @@ export default function App() {
   const t = ui[language];
 
   const go = (destination: Page) => {
+    if (destination !== page) {
+      setPageHistory((history) => [...history, page]);
+    }
     setPage(destination);
+    setSelectedTalk(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const openTalk = (id: number) => {
+    setTalkOrigin(page);
+    if (page !== "programme") {
+      setPageHistory((history) => [...history, page]);
+    }
+    setSelectedTalk(id);
+    setPage("programme");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const goBack = () => {
+    if (selectedTalk && talkOrigin === "programme") {
+      setSelectedTalk(null);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const previousPage = pageHistory.at(-1) ?? "welcome";
+    setPageHistory((history) => history.slice(0, -1));
+    setPage(previousPage);
     setSelectedTalk(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -620,6 +647,9 @@ export default function App() {
 
   const Header = () => (
     <header className="topbar">
+      <button className="header-back" onClick={goBack} aria-label={t.back}>
+        <Icon name="back" size={18} />
+      </button>
       <button className="heartland-mark" onClick={() => go("home")} aria-label="Heartland home">
         <span>HEART</span>
         <span>LAND</span>
@@ -655,14 +685,7 @@ export default function App() {
   );
 
   const TalkCard = ({ talk }: { talk: (typeof talks)[number] }) => (
-    <button
-      className="talk-card"
-      onClick={() => {
-        setSelectedTalk(talk.id);
-        setPage("programme");
-        window.scrollTo(0, 0);
-      }}
-    >
+    <button className="talk-card" onClick={() => openTalk(talk.id)}>
       <div className="talk-meta">
         <span>{t[talk.day as "friday" | "saturday" | "sunday"]}</span>
         <span>{talk.time}</span>
@@ -742,14 +765,7 @@ export default function App() {
         </div>
         <h2>{talks[0].title[language]}</h2>
         <p>{talks[0].speakers}</p>
-        <ArrowButton
-          onClick={() => {
-            setSelectedTalk(1);
-            setPage("programme");
-          }}
-        >
-          {t.readStory}
-        </ArrowButton>
+        <ArrowButton onClick={() => openTalk(1)}>{t.readStory}</ArrowButton>
       </div>
 
       <div className="dashboard-section">
@@ -1082,10 +1098,6 @@ export default function App() {
 
     return (
       <section className={`literary-page ${isIbsen ? "theatre" : "wallpaper"}`}>
-        <button className="floating-back" onClick={() => go("home")}>
-          <Icon name="back" />
-          {t.back}
-        </button>
         <div className="literary-hero">
           <img src={isIbsen ? images.theatre : images.wallpaper} alt="" />
           <div />
@@ -1103,7 +1115,7 @@ export default function App() {
                   : "ora lives in a marriage shaped by nineteenth-century law, economy and expectation. When her secret loan is exposed, she must choose between her role and herself."
                 : language === "da"
                   ? "Fortælleren bliver ordineret ro og forbudt at skrive. Hendes mand Johns medicinske autoritet lukker hende inde i et værelse, hvor tapetet overtager hendes blik."
-                  : "The narrator is prescribed rest and forbidden to write. Her husband John’s medical authority confines her to a room where the wallpaper takes over her vision."}
+                  : "he narrator is prescribed rest and forbidden to write. Her husband John’s medical authority confines her to a room where the wallpaper takes over her vision."}
             </p>
           </div>
           <div className="literary-section">
@@ -1320,10 +1332,6 @@ export default function App() {
       const isSaved = savedTalks.includes(currentTalk.id);
       return (
         <section className="talk-detail">
-          <button className="back-link" onClick={() => setSelectedTalk(null)}>
-            <Icon name="back" />
-            {t.programme}
-          </button>
           <div className="talk-index">0{currentTalk.id}</div>
           <p className="kicker orange-text">
             {t[currentTalk.day as "friday" | "saturday" | "sunday"]} · {currentTalk.time}
