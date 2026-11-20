@@ -296,8 +296,9 @@
 }
 .welcome-copy h1 em {
   color: var(--orange);
-  font-family: "Newsreader", serif;
-  font-weight: 400;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
 }
 .danish-title {
   margin: 11px 0 35px;
