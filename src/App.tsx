@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Lang = "da" | "en";
 type Page =
@@ -38,8 +38,6 @@ const images = {
   wallpaper:
     "https://images.unsplash.com/photo-1690268798033-ae52e4e57db6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=88&w=1000",
 };
-
-const countdownTarget = new Date("2027-06-12T12:00:00+02:00").getTime();
 
 const ui = {
   da: {
@@ -592,37 +590,8 @@ export default function App() {
   const [draft, setDraft] = useState("");
   const [questions, setQuestions] = useState<{ talk: number; text: string }[]>([]);
   const [themeAnswer, setThemeAnswer] = useState<number | null>(null);
-  const [countdown, setCountdown] = useState(() =>
-    Math.max(0, Math.floor((countdownTarget - Date.now()) / 1000)),
-  );
   const language = lang ?? "da";
   const t = ui[language];
-  const countdownParts = [
-    {
-      value: Math.floor(countdown / 86400),
-      label: language === "da" ? "Dage" : "Days",
-    },
-    {
-      value: Math.floor((countdown % 86400) / 3600),
-      label: language === "da" ? "Timer" : "Hours",
-    },
-    {
-      value: Math.floor((countdown % 3600) / 60),
-      label: language === "da" ? "Min." : "Min.",
-    },
-    {
-      value: countdown % 60,
-      label: language === "da" ? "Sek." : "Sec.",
-    },
-  ];
-
-  useEffect(() => {
-    const updateCountdown = () =>
-      setCountdown(Math.max(0, Math.floor((countdownTarget - Date.now()) / 1000)));
-    updateCountdown();
-    const timer = window.setInterval(updateCountdown, 1000);
-    return () => window.clearInterval(timer);
-  }, []);
 
   const go = (destination: Page) => {
     if (destination !== page) {
@@ -753,17 +722,6 @@ export default function App() {
         <div className="welcome-theme">
           <span>2027 THEME</span>
           <p>{t.theme}</p>
-        </div>
-        <div className="countdown">
-          <p>{language === "da" ? "12. JUNI 2027 · KL. 12.00" : "12 JUNE 2027 · 12:00"}</p>
-          <div>
-            {countdownParts.map((part) => (
-              <span key={part.label}>
-                <strong>{String(part.value).padStart(2, "0")}</strong>
-                <small>{part.label}</small>
-              </span>
-            ))}
-          </div>
         </div>
         <ArrowButton
           solid

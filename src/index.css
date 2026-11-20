@@ -330,44 +330,6 @@
   font-family: "Newsreader", serif;
   font-size: 18px;
 }
-.countdown {
-  padding: 13px 0 15px;
-  border-top: 1px solid #ffffff70;
-}
-.countdown > p {
-  margin-bottom: 10px;
-  color: #ffffffb8;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.13em;
-}
-.countdown > div {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-.countdown span {
-  display: flex;
-  flex-direction: column;
-  border-left: 1px solid #ffffff38;
-}
-.countdown span:first-child {
-  border-left: 0;
-}
-.countdown strong {
-  color: var(--orange);
-  font-family: "DM Sans", sans-serif;
-  font-size: 23px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-.countdown small {
-  margin-top: 4px;
-  color: #ffffffa8;
-  font-size: 7px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
 .photo-credit {
   position: absolute;
   z-index: 2;
