@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>Heartland – loading screen 9:16</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:inherit}a:hover{opacity:.8}
+</style>
+</helmet>
+<div role="progressbar" aria-label="Indlæser Heartland" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}" style="width: 1080px; height: 1920px; position: relative; overflow: hidden; background: {{ bgCss }}; color: {{ inkCss }}; font-family: 'Inter Tight', 'Inter', system-ui, sans-serif">
+<canvas ref="{{ setCanvas }}" width="1080" height="1920" aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; display: block"></canvas>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-label="Heartland logo" style="position: absolute; left: 0; top: 0; overflow: visible">
+<defs>
+<clipPath id="hl-clip-l"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ lT }}"></path></clipPath>
+<clipPath id="hl-clip-r"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ rT }}"></path></clipPath>
+<clipPath id="hl-below"><rect x="-800" y="-85.6" width="1600" height="900"></rect></clipPath>
+<clipPath id="hl-zone-l"><rect x="-28.9" y="-140" width="28.9" height="54.4"></rect></clipPath>
+<clipPath id="hl-zone-r"><rect x="0" y="-140" width="28.9" height="54.4"></rect></clipPath>
+<mask id="hl-gaps" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="-800" y="-800" width="1600" height="1600">
+<rect x="-800" y="-800" width="1600" height="1600" fill="#ffffff"></rect>
+<g opacity="{{ joinO }}">
+<rect x="-28.9" y="-140" width="57.8" height="54.4" fill="#000000"></rect>
+<g clip-path="url(#hl-zone-l)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ rT }}" fill="#ffffff"></path></g>
+<g clip-path="url(#hl-zone-r)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ lT }}" fill="#ffffff"></path></g>
+</g>
+<g clip-path="url(#hl-below)">
+<g clip-path="url(#hl-clip-r)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ lT }}" fill="none" stroke="#000000" stroke-width="6.4" stroke-linejoin="round"></path></g>
+<g clip-path="url(#hl-clip-l)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ rT }}" fill="none" stroke="#000000" stroke-width="6.4" stroke-linejoin="round"></path></g>
+</g>
+</mask>
+</defs>
+<g transform="{{ markT }}" fill="{{ inkCss }}">
+<g mask="url(#hl-gaps)">
+<path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ lT }}"></path>
+<path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ rT }}"></path>
+</g>
+<g clip-path="url(#hl-clip-l)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ rT }}" stroke="{{ inkCss }}" stroke-width="1.4"></path></g>
+<g clip-path="url(#hl-clip-r)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="{{ lT }}" fill="none" stroke="{{ inkCss }}" stroke-width="1.4"></path></g>
+</g>
+</svg>
+<div ref="{{ setText }}" style="position: absolute; left: {{ textLeft }}px; top: {{ textTop }}px; margin: 0; font-size: 128px; font-weight: 600; line-height: 1; letter-spacing: -0.035em; white-space: nowrap; clip-path: inset(-20% {{ textClip }}% -20% -2%); transform: translateX({{ textShift }}px); opacity: {{ textO }}">Heartland</div>
+<div style="position: absolute; left: 380px; top: 1676px; width: 320px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 28px; font-weight: 600; letter-spacing: -0.01em">
+<span>Indlæser</span>
+<span style="font-variant-numeric: tabular-nums">{{ pct }}%</span>
+</div>
+<div style="height: 6px; position: relative">
+<div style="position: absolute; left: 0; right: 0; top: 2px; height: 2px; background: {{ inkCss }}"></div>
+<div style="position: absolute; left: 0; top: 0; bottom: 0; width: {{ barW }}%; background: {{ inkCss }}"></div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"speed":{"editor":"range","default":1,"min":0.25,"max":2,"step":0.05,"section":"Motion"},"palette":{"editor":"enum","default":"cycle","options":["cycle","green on dark green","plum on pink","blue on navy","maroon on salmon","pink on black","dark green on mint","blue on white","pink on plum"],"section":"Duotone"},"abstraction":{"editor":"range","default":0.85,"min":0,"max":1,"step":0.05,"section":"Background"},"$preview":{"width":1080,"height":1920}}'>
+class Component extends DCLogic {
+
+  // Brand duotones (Brand Farver – Duotone kombinationer): [name, background, ink]
+  duos() {
+    return [
+      ['green on dark green', '#275C4C', '#2DEA8B'],
+      ['plum on pink',        '#FFC0F0', '#752A64'],
+      ['blue on navy',        '#0F216A', '#207DFF'],
+      ['maroon on salmon',    '#FF9FA0', '#801C0D'],
+      ['pink on black',       '#000000', '#EE5BCA'],
+      ['dark green on mint',  '#B1FFD8', '#275C4C'],
+      ['blue on white',       '#FFFFFF', '#207DFF'],
+      ['pink on plum',        '#752A64', '#FFC0F0']
+    ];
+  }
+  rgb(h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+
+  clamp(x) { return x < 0 ? 0 : (x > 1 ? 1 : x); }
+  ease(x) { x = this.clamp(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+  easeIn(x) { x = this.clamp(x); return x * x * x; }
+  easeOut(x) { x = this.clamp(x); return 1 - Math.pow(1 - x, 3); }
+  seg(t, a, b) { return this.clamp((t - a) / (b - a)); }
+  mix(a, b, k) { return a + (b - a) * k; }
+
+  // ---------- one timeline, everything derived from t (seconds) ----------
+  frame(t) {
+    const T = 8.0, CLICK = 1.55;
+    const tl = ((t % T) + T) % T;
+
+    // 1) two filled hearts are pulled together and click into the mark
+    const Dmax = 98, tiltMax = 11;
+    let D, tilt, squash = 1, pulse = 0;
+    const tau = tl - CLICK;
+    if (tl < CLICK) {
+      const k = this.easeIn(this.seg(tl, 0.25, CLICK));
+      D = Dmax * (1 - k);
+      tilt = tiltMax * (1 - k);
+    } else if (tl < 6.2) {
+      D = -3.2 * Math.exp(-7 * tau) * Math.sin(22 * tau);
+      tilt = -2.2 * Math.exp(-7 * tau) * Math.sin(22 * tau);
+      squash = 1 + 0.06 * Math.exp(-6 * tau) * Math.sin(18 * tau + 0.9);
+      pulse = Math.exp(-3.2 * tau);
+    } else {
+      const k = this.easeOut(this.seg(tl, 6.2, 7.2));
+      D = Dmax * k;
+      tilt = tiltMax * k;
+    }
+    // apart: a soft float while they wait
+    const apart = this.clamp(D / Dmax);
+    const bob = Math.sin(t * 2.6) * 5 * apart;
+
+    // 2) the mark shrinks into the lockup and the wordmark appears
+    const reveal = tl < 5 ? this.ease(this.seg(tl, 2.3, 3.2)) : 1 - this.ease(this.seg(tl, 5.4, 6.1));
+
+    const tw = this._tw || 586;
+    const S1 = 1.0, S0 = 2.6;
+    const S = this.mix(S0, S1, reveal) * squash;
+    const gap = 32;
+    const lockW = 150 * S1 + gap + tw;
+    const lockLeft = 540 - lockW / 2;
+    const cx = this.mix(540, lockLeft + 75 * S1, reveal);
+    const cy = 960;
+
+    const markT = 'translate(' + cx.toFixed(2) + ' ' + cy + ') scale(' + S.toFixed(4) + ') translate(0 51.5)';
+    const lT = 'translate(' + (-D).toFixed(2) + ' ' + (-bob).toFixed(2) + ') rotate(' + (-tilt).toFixed(2) + ' -5.89 0)';
+    const rT = 'translate(' + D.toFixed(2) + ' ' + bob.toFixed(2) + ') scale(-1 1) rotate(' + (-tilt).toFixed(2) + ' -5.89 0)';
+
+    const pct = Math.round(this.ease(this.seg(tl, 0, 3.2)) * 100);
+
+    // 3) duotone: snaps to the next pair on every click
+    const D2 = this.duos();
+    const choice = (this.props && this.props.palette) || 'cycle';
+    let idx = D2.findIndex(d => d[0] === choice);
+    if (idx < 0) idx = ((Math.floor((t - CLICK) / T) + 1) % D2.length + D2.length) % D2.length;
+    const bgHex = D2[idx][1], inkHex = D2[idx][2];
+
+    const absMax = this.props && this.props.abstraction != null ? this.props.abstraction : 0.85;
+    const abs = (0.5 - 0.5 * Math.cos(t * Math.PI * 2 / 16)) * absMax;
+
+    const heroRx = (75 + Math.max(D, 0)) * S0 + 70, heroRy = 52 * S0 + 80;
+    const lockRx = lockW / 2 + 90, lockRy = 52 * S1 + 110;
+
+    return {
+      markT, lT, rT,
+      joinO: this.clamp(1 - (Math.abs(D) - 4) / 8).toFixed(3),
+      textLeft: (lockLeft + 150 * S1 + gap).toFixed(1),
+      textTop: (cy - 64).toFixed(1),
+      textClip: ((1 - reveal) * 104).toFixed(2),
+      textShift: (-(1 - reveal) * 40).toFixed(1),
+      textO: this.clamp(reveal * 1.6).toFixed(3),
+      pct, barW: pct,
+      bgCss: bgHex, inkCss: inkHex,
+      bg: this.rgb(bgHex), ink: this.rgb(inkHex),
+      sym: 1 - 0.9 * abs,
+      symY: 0.5 + 0.5 * Math.cos(t * Math.PI * 2 / 24),
+      warp: 0.03 + 0.13 * abs,
+      holes: abs,
+      pulse,
+      c1: [540, cy, this.mix(heroRx, lockRx, reveal), this.mix(heroRy, lockRy, reveal)],
+      c2: [540, 1716, 270, 100]
+    };
+  }
+
+  // ---------- WebGL background: mirrored "5. element" forms, two colours only ----------
+  initGL(canvas) {
+    const gl = canvas.getContext('webgl', { antialias: false, premultipliedAlpha: false, preserveDrawingBuffer: true });
+    if (!gl) return null;
+    const ext = gl.getExtension('OES_standard_derivatives');
+    const vs = 'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}';
+    const fs = (ext ? '#extension GL_OES_standard_derivatives : enable\n#define HAS_D 1\n' : '') + `
+precision highp float;
+uniform vec2 uRes; uniform float uT, uPx;
+uniform vec3 uBg, uInk;
+uniform float uSym, uSymY, uWarp, uHoles, uPulse;
+uniform vec4 uC1, uC2;
+float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
+float noise(vec2 p){
+  vec2 i = floor(p), f = fract(p); vec2 u = f * f * (3. - 2. * f);
+  return mix(mix(hash(i), hash(i + vec2(1., 0.)), u.x), mix(hash(i + vec2(0., 1.)), hash(i + vec2(1., 1.)), u.x), u.y) * 2. - 1.;
+}
+float field(vec2 q){
+  vec2 w = vec2(noise(q * 3.1 + vec2(uT * .11, 0.)), noise(q * 3.1 + vec2(5.2, -uT * .09)));
+  w += .5 * vec2(noise(q * 6.3 - uT * .07), noise(q * 6.3 + vec2(2.7, uT * .08)));
+  q += uWarp * w;
+  float f = 0.;
+  for (int i = 0; i < 12; i++) {
+    float fi = float(i);
+    vec2 c = vec2(-.03 + .27 * (.5 + .5 * sin(uT * (.13 + .031 * fi) + fi * 1.7)), -.03 + .5 * (.5 + .5 * sin(uT * (.09 + .023 * fi) + fi * 2.3)));
+    float r = .036 + .026 * (.5 + .5 * sin(uT * .21 + fi * .9));
+    if (i > 7) r *= .38;
+    vec2 d = q - c;
+    f += r * r / (dot(d, d) + 1e-5);
+  }
+  return f;
+}
+void main(){
+  vec2 px = vec2(gl_FragCoord.x, uRes.y - gl_FragCoord.y) / uPx;
+  vec2 p = (px - vec2(540., 960.)) / 1920.;
+  // mirrored on both axes: one quadrant drives the whole screen
+  float f = field(abs(p));
+  f *= 1. + .5 * uPulse;
+  vec2 m = vec2(540., 960.) + abs(px - vec2(540., 960.));
+  f *= smoothstep(.78, 1.3, length((m - uC1.xy) / uC1.zw));
+  f *= smoothstep(.78, 1.3, length((m - uC2.xy) / uC2.zw));
+  float g = log(f + 1e-6);
+#ifdef HAS_D
+  float aa = max(fwidth(g) * .8, 1e-4);
+#else
+  float aa = .04;
+#endif
+  float ink = smoothstep(-aa, aa, g);
+  gl_FragColor = vec4(mix(uBg, uInk, ink), 1.);
+}`;
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) { console.warn(gl.getShaderInfoLog(s)); return null; } return s; };
+    const v = sh(gl.VERTEX_SHADER, vs), f = sh(gl.FRAGMENT_SHADER, fs);
+    if (!v || !f) return null;
+    const prog = gl.createProgram();
+    gl.attachShader(prog, v); gl.attachShader(prog, f); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
+    gl.useProgram(prog);
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'a');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const u = {};
+    ['uRes', 'uT', 'uPx', 'uBg', 'uInk', 'uSym', 'uSymY', 'uWarp', 'uHoles', 'uPulse', 'uC1', 'uC2'].forEach(n => { u[n] = gl.getUniformLocation(prog, n); });
+    return { gl, u };
+  }
+
+  draw(t, fr) {
+    const G = this._gl;
+    if (!G) return;
+    const { gl, u } = G;
+    const c = gl.canvas;
+    gl.viewport(0, 0, c.width, c.height);
+    gl.uniform2f(u.uRes, c.width, c.height);
+    gl.uniform1f(u.uPx, c.width / 1080);
+    gl.uniform1f(u.uT, t + 40.0);
+    gl.uniform3f(u.uBg, fr.bg[0] / 255, fr.bg[1] / 255, fr.bg[2] / 255);
+    gl.uniform3f(u.uInk, fr.ink[0] / 255, fr.ink[1] / 255, fr.ink[2] / 255);
+    gl.uniform1f(u.uSym, fr.sym);
+    gl.uniform1f(u.uSymY, fr.symY);
+    gl.uniform1f(u.uWarp, fr.warp);
+    gl.uniform1f(u.uHoles, fr.holes);
+    gl.uniform1f(u.uPulse, fr.pulse);
+    gl.uniform4f(u.uC1, fr.c1[0], fr.c1[1], fr.c1[2], fr.c1[3]);
+    gl.uniform4f(u.uC2, fr.c2[0], fr.c2[1], fr.c2[2], fr.c2[3]);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+
+  componentDidMount() {
+    this._reduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this._canvas && !this._gl) this._gl = this.initGL(this._canvas);
+    if (typeof document !== 'undefined' && document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => { if (this._textEl) { this._tw = this._textEl.offsetWidth; this.forceUpdate(); } });
+    }
+    if (this._reduced) {
+      const t = 4.2;
+      this.draw(t, this.frame(t));
+      this.setState({ t });
+      return;
+    }
+    let last = 0;
+    const tick = (now) => {
+      if (this._dead) return;
+      const dt = Math.min(0.1, (now - (last || now)) / 1000);
+      last = now;
+      const speed = this.props && this.props.speed != null ? this.props.speed : 1;
+      this._t = (this._t || 0) + dt * speed;
+      if (!this._tw && this._textEl) this._tw = this._textEl.offsetWidth || 0;
+      this.draw(this._t, this.frame(this._t));
+      this.setState({ t: this._t });
+      this._raf = requestAnimationFrame(tick);
+    };
+    this._raf = requestAnimationFrame(tick);
+  }
+
+  componentWillUnmount() {
+    this._dead = true;
+    if (this._raf) cancelAnimationFrame(this._raf);
+  }
+
+  renderVals() {
+    if (!this._setCanvas) {
+      this._setCanvas = (el) => { if (el && el !== this._canvas) { this._canvas = el; this._gl = this.initGL(el); } };
+      this._setText = (el) => { if (el) this._textEl = el; };
+    }
+    const t = (this.state && this.state.t) || 0;
+    const fr = this.frame(t);
+    return Object.assign({}, fr, { setCanvas: this._setCanvas, setText: this._setText });
+  }
+}
+</script>
+</body>
+</html>
