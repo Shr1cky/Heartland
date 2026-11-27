@@ -366,7 +366,10 @@ const easeIn = (x: number) => x * x * x;
 const mix = (a: number, b: number, k: number) => a + (b - a) * k;
 
 const CLICK = 1.55;
-export const SPLASH_DURATION = 4.6;
+/* the lockup and 100% land at 3.2 s; hold there for 1 s, then fade */
+const LOCKED = 3.2;
+export const SPLASH_HOLD = 1;
+export const SPLASH_DURATION = LOCKED + SPLASH_HOLD;
 
 function splashFrame(t: number, textWidth: number) {
   const Dmax = 98;
@@ -387,7 +390,7 @@ function splashFrame(t: number, textWidth: number) {
     pulse = Math.exp(-3.2 * tau);
   }
   const bob = Math.sin(t * 2.6) * 5 * clamp(D / Dmax);
-  const reveal = ease(seg(t, 2.3, 3.2));
+  const reveal = ease(seg(t, 2.3, LOCKED));
   const S1 = 1;
   const S0 = 2.6;
   const S = mix(S0, S1, reveal) * squash;
@@ -410,7 +413,7 @@ function splashFrame(t: number, textWidth: number) {
     textClip: (1 - reveal) * 104,
     textShift: -(1 - reveal) * 40,
     textOpacity: clamp(reveal * 1.6),
-    pct: Math.round(ease(seg(t, 0, 3.2)) * 100),
+    pct: Math.round(ease(seg(t, 0, LOCKED)) * 100),
     ink: {
       clear: [
         [540, cy, mix(heroRx, lockRx, reveal), mix(heroRy, lockRy, reveal)],
@@ -433,7 +436,7 @@ export function Splash({
   onDone: () => void;
 }) {
   const reduced = prefersReducedMotion();
-  const [t, setT] = useState(reduced ? 4.2 : 0);
+  const [t, setT] = useState(reduced ? LOCKED : 0);
   const [out, setOut] = useState(false);
   const [scale, setScale] = useState(1);
   const [textWidth, setTextWidth] = useState(586);
@@ -448,23 +451,51 @@ export function Splash({
     window.addEventListener("resize", fit);
     const measure = () => textRef.current && setTextWidth(textRef.current.offsetWidth);
     measure();
-    document.fonts?.ready.then(measure);
+    // Time advances only with frames that are actually drawn, so the full sequence
+    // plays even if the page loads in a background tab or behind another panel.
     let raf = 0;
-    const start = performance.now();
+    let last = 0;
+    let finished = false;
+    let alive = true;
+    const finish = () => {
+      if (finished || !alive) return;
+      finished = true;
+      setOut(true);
+      window.setTimeout(onDone, 500);
+    };
     const tick = (now: number) => {
-      const next = reduced ? 4.2 : (now - start) / 1000;
+      const dt = last ? Math.min((now - last) / 1000, 1 / 30) : 0;
+      last = now;
+      const next = Math.min(tRef.current + dt, SPLASH_DURATION);
       tRef.current = next;
       setT(next);
-      if (next >= SPLASH_DURATION || (reduced && now - start > 1200)) {
-        setOut(true);
-        window.setTimeout(onDone, reduced ? 0 : 500);
-        return;
-      }
+      if (next >= SPLASH_DURATION) return finish();
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
+    if (reduced) {
+      // reduced motion: show the finished logo at 100% for the hold time
+      tRef.current = LOCKED;
+      setT(LOCKED);
+      const id = window.setTimeout(finish, SPLASH_HOLD * 1000);
+      return () => {
+        window.clearTimeout(id);
+        window.removeEventListener("resize", fit);
+      };
+    }
+    // start once the wordmark font is ready (or after 1.5 s at most)
+    let started = false;
+    const begin = () => {
+      if (started || !alive) return;
+      started = true;
+      measure();
+      raf = requestAnimationFrame(tick);
+    };
+    document.fonts?.ready.then(begin);
+    const fallback = window.setTimeout(begin, 1500);
     return () => {
+      alive = false;
       cancelAnimationFrame(raf);
+      window.clearTimeout(fallback);
       window.removeEventListener("resize", fit);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

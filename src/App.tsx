@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DuotoneFilters, InkblotCanvas, Lockup, PairKey, Splash } from "./brand";
+import { InkblotCanvas, Lockup, Splash } from "./brand";
 
 type Lang = "da" | "en";
 type Page =
@@ -40,18 +40,19 @@ const images = {
     "https://images.unsplash.com/photo-1690268798033-ae52e4e57db6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=88&w=1000",
 };
 
-/* One brand duotone per screen (Brand Farver – Duotone kombinationer). */
-const pagePair: Record<Page, PairKey> = {
-  welcome: "a",
-  home: "a",
-  explore: "c",
-  timeline: "d",
-  ibsen: "b",
-  yellow: "e",
-  glossary: "g",
-  programme: "f",
-  questions: "h",
-  my: "b",
+/* Brand colour family per screen: Livlig accent, Frisk tint, Rolig deep (Præsentation 2027 – Farvepalette). */
+type Accent = "green" | "pink" | "blue" | "red";
+const pageAccent: Record<Page, Accent> = {
+  welcome: "green",
+  home: "green",
+  explore: "blue",
+  timeline: "red",
+  ibsen: "pink",
+  yellow: "green",
+  glossary: "blue",
+  programme: "green",
+  questions: "pink",
+  my: "red",
 };
 
 const ui = {
@@ -606,12 +607,7 @@ export default function App() {
   const [questions, setQuestions] = useState<{ talk: number; text: string }[]>([]);
   const [themeAnswer, setThemeAnswer] = useState<number | null>(null);
   const [splashDone, setSplashDone] = useState(false);
-  const pair = pagePair[page];
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.forEach((c) => c.startsWith("duo-") && root.classList.remove(c));
-    root.classList.add(`duo-${pair}`);
-  }, [pair]);
+  const accent = pageAccent[page];
   useEffect(() => {
     document.documentElement.lang = lang ?? "da";
   }, [lang]);
@@ -735,7 +731,13 @@ export default function App() {
             const stage = document.querySelector(".welcome-stage");
             const w = stage?.clientWidth ?? 390;
             const h = stage?.clientHeight ?? 500;
-            return { clear: [[w / 2, h / 2, w * 0.44, 58]] };
+            // keep the logo and the header row free of shapes (mirrored, so top + bottom strips)
+            return {
+              clear: [
+                [w / 2, h / 2, w * 0.44, 58],
+                [w / 2, h - 27, w * 0.8, 46],
+              ],
+            };
           }}
         />
         <div className="welcome-head">
@@ -1671,12 +1673,11 @@ export default function App() {
       : page;
 
   return (
-    <div className={`app-shell duo-${pair}`}>
-      <DuotoneFilters />
+    <div className={`app-shell accent-${accent}`}>
       {!splashDone && (
         <Splash
           from="e"
-          to={pagePair.welcome}
+          to="a"
           label={language === "da" ? "Indlæser" : "Loading"}
           onDone={() => setSplashDone(true)}
         />

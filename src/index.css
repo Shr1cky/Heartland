@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
 
 @layer base {
@@ -6,13 +6,13 @@
     box-sizing: border-box;
   }
   html {
-    background: var(--pair-ink);
+    background: #000;
   }
   body {
     margin: 0;
-    background: var(--pair-ink);
+    background: #000;
     color: var(--ink);
-    font-family: "Inter Tight", system-ui, sans-serif;
+    font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   }
   button,
   input,
@@ -32,7 +32,7 @@
   h2,
   h3,
   blockquote {
-    font-family: "Inter Tight", system-ui, sans-serif;
+    font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
     font-weight: 400;
   }
 }
@@ -154,11 +154,12 @@
   color: var(--ink);
 }
 .bottom-nav button.active::before {
+  height: 3px;
   position: absolute;
   top: 0;
   width: 25px;
   height: 2px;
-  background: var(--ink);
+  background: var(--accent);
   content: "";
 }
 .kicker {
@@ -168,8 +169,8 @@
   text-transform: uppercase;
 }
 .page-intro {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--accent);
+  --ink: var(--black);
   color: var(--ink);
   padding: 43px 22px 34px;
   background: var(--bg);
@@ -184,7 +185,7 @@
 .page-intro .lead {
   margin-top: 22px;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.36;
 }
@@ -230,8 +231,8 @@
   min-height: 55px;
   padding-left: 18px;
   border: 0;
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--accent);
+  color: var(--black);
 }
 .arrow-button.solid i {
   margin-right: 10px;
@@ -239,7 +240,7 @@
 .empty-state {
   padding: 30px 0;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 17px;
 }
 
@@ -282,7 +283,7 @@
 }
 .welcome-copy > h1 {
   margin: 16px 0 0;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 57px;
   font-weight: 500;
   line-height: 0.82;
@@ -290,13 +291,13 @@
 }
 .welcome-copy h1 em {
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-style: normal;
   font-weight: inherit;
 }
 .danish-title {
   margin: 11px 0 35px;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 19px;
   font-style: normal;
 }
@@ -312,7 +313,7 @@
   letter-spacing: 0.12em;
 }
 .welcome-theme p {
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
 }
 .photo-credit {
@@ -328,8 +329,8 @@
 
 /* Home */
 .home-hero {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--accent);
+  --ink: var(--black);
   color: var(--ink);
   padding: 42px 22px 43px;
   background: var(--bg);
@@ -346,13 +347,13 @@
 .home-hero > p:last-of-type {
   max-width: 310px;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.35;
 }
 .featured-talk {
-  --bg: var(--pair-bg);
-  --ink: var(--pair-ink);
+  --bg: var(--white);
+  --ink: var(--black);
   color: var(--ink);
   margin: 0;
   padding: 29px 22px 34px;
@@ -383,10 +384,10 @@
   bottom: 0;
   left: 0;
   padding: 8px 11px;
-  background: var(--ink);
+  background: var(--accent);
   font-size: 11px;
   font-weight: 600;
-  color: var(--bg);
+  color: var(--black);
 }
 .featured-talk h2 {
   margin: 18px 0 5px;
@@ -422,8 +423,8 @@
   background: var(--bg);
 }
 .dashboard-card.tall {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   grid-row: span 2;
 }
@@ -468,8 +469,8 @@
   width: 17px;
 }
 .dashboard-card.orange {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--accent);
+  --ink: var(--black);
   color: var(--ink);
   background: var(--bg);
 }
@@ -477,8 +478,8 @@
   border: 1px solid var(--ink);
 }
 .home-literature {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   padding: 35px 22px 45px;
   background: var(--bg);
@@ -530,10 +531,10 @@
   right: 0;
   bottom: 0;
   padding: 9px 12px;
-  background: var(--ink);
+  background: var(--accent);
   font-size: 11px;
   font-weight: 600;
-  color: var(--bg);
+  color: var(--black);
 }
 .essay-block,
 .story-intro {
@@ -545,19 +546,19 @@
 .dropcap {
   float: left;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 65px;
   line-height: 0.7;
 }
 .essay-block p,
 .story-intro p {
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 20px;
   line-height: 1.4;
 }
 .big-questions {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   padding: 35px 22px;
   background: var(--bg);
@@ -595,7 +596,7 @@
   grid-column: 2;
   margin-top: 13px;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.4;
   animation: reveal 0.25s ease;
@@ -626,8 +627,8 @@
   border: 1px solid var(--ink);
 }
 .concept-scroll button:nth-child(even) {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--accent);
+  --ink: var(--black);
   color: var(--ink);
   background: var(--bg);
 }
@@ -641,7 +642,7 @@
 }
 .concept-scroll button p {
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.3;
 }
@@ -689,7 +690,7 @@
   color: var(--ink);
 }
 .era-rail button.active i {
-  background: var(--ink);
+  background: var(--accent);
   color: var(--bg);
 }
 .era-detail {
@@ -711,8 +712,8 @@
   right: 14px;
   bottom: 12px;
   padding: 7px 9px;
-  color: var(--bg);
-  background: var(--ink);
+  color: var(--black);
+  background: var(--accent);
   font-size: 11px;
 }
 .era-detail > h2 {
@@ -721,13 +722,13 @@
   line-height: 1;
 }
 .era-context {
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.42;
 }
 .fact-block {
-  --bg: var(--pair-bg);
-  --ink: var(--pair-ink);
+  --bg: var(--white);
+  --ink: var(--black);
   color: var(--ink);
   margin: 29px 0;
   padding: 16px;
@@ -742,12 +743,12 @@
 }
 .fact-block p {
   margin-top: 7px;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 17px;
 }
 .era-detail blockquote {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   margin: 0 -22px;
   padding: 31px 27px;
@@ -759,7 +760,7 @@ blockquote cite {
   margin-top: 17px;
   display: block;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 11px;
   font-style: normal;
   line-height: 1.4;
@@ -772,7 +773,7 @@ blockquote cite {
 }
 .why-now > p:last-child {
   margin-top: 7px;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
 }
 .save-article,
@@ -811,8 +812,8 @@ blockquote cite {
   text-transform: uppercase;
 }
 .literary-hero {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   height: 570px;
   position: relative;
@@ -851,7 +852,7 @@ blockquote cite {
 .literary-hero > p:last-child {
   bottom: 30px;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.3;
 }
@@ -866,8 +867,8 @@ blockquote cite {
   padding-bottom: 40px;
 }
 .literary-section {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   padding: 36px 22px;
   background: var(--bg);
@@ -892,8 +893,8 @@ blockquote cite {
   border: 1px solid var(--ink);
 }
 .character-deck button.active {
-  --bg: var(--pair-bg);
-  --ink: var(--pair-ink);
+  --bg: var(--white);
+  --ink: var(--black);
   color: var(--ink);
   background: var(--bg);
   border-color: var(--ink);
@@ -908,7 +909,7 @@ blockquote cite {
 }
 .character-deck p {
   margin-top: 7px;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 15px;
   line-height: 1.3;
 }
@@ -936,8 +937,8 @@ blockquote cite {
   font-size: 12px;
 }
 .context-panel {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--accent);
+  --ink: var(--black);
   color: var(--ink);
   padding: 39px 22px;
   background: var(--bg);
@@ -948,7 +949,7 @@ blockquote cite {
   line-height: 1;
 }
 .context-panel > p:not(.kicker) {
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.4;
 }
@@ -959,8 +960,8 @@ blockquote cite {
   font-size: 11px;
 }
 .look-closer {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   padding: 42px 22px;
   background: var(--bg);
@@ -987,8 +988,8 @@ blockquote cite {
   line-height: 1.2;
 }
 .wallpaper .look-closer {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   background: var(--bg);
 }
@@ -1065,7 +1066,7 @@ blockquote cite {
 }
 .glossary-content > div p {
   margin-top: 4px;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.35;
 }
@@ -1111,7 +1112,7 @@ blockquote cite {
 }
 .talk-card > p {
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 14px;
 }
 .talk-card > strong {
@@ -1132,8 +1133,8 @@ blockquote cite {
   border-radius: 0;
 }
 .talk-detail {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   min-height: calc(100vh - 68px);
   padding: 25px 22px 50px;
@@ -1155,7 +1156,7 @@ blockquote cite {
   top: 38px;
   right: -10px;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 160px;
 }
 .orange-text {
@@ -1170,7 +1171,7 @@ blockquote cite {
 }
 .talk-subtitle {
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
 }
 .detail-facts {
@@ -1197,7 +1198,7 @@ blockquote cite {
 }
 .detail-copy > p:not(.kicker) {
   margin-top: 9px;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.4;
 }
@@ -1225,8 +1226,8 @@ blockquote cite {
   font-size: 11px;
 }
 .preparation-box {
-  --bg: var(--pair-bg);
-  --ink: var(--pair-ink);
+  --bg: var(--white);
+  --ink: var(--black);
   color: var(--ink);
   margin: 34px 0 20px;
   padding: 20px;
@@ -1254,13 +1255,13 @@ blockquote cite {
   text-transform: uppercase;
 }
 .detail-actions button:last-child {
-  color: var(--bg);
-  background: var(--ink);
+  color: var(--black);
+  background: var(--accent);
   border-color: var(--ink);
 }
 .detail-actions button.saved {
-  --bg: var(--pair-bg);
-  --ink: var(--pair-ink);
+  --bg: var(--white);
+  --ink: var(--black);
   color: var(--ink);
   background: var(--bg);
   border-color: var(--ink);
@@ -1311,7 +1312,7 @@ blockquote cite {
 }
 .suggestions button p {
   padding-right: 10px;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.2;
 }
@@ -1319,7 +1320,7 @@ blockquote cite {
   min-height: 135px;
   padding: 15px;
   resize: none;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 17px;
 }
 .character-count {
@@ -1336,12 +1337,12 @@ blockquote cite {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--ink);
+  background: var(--accent);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--bg);
+  color: var(--black);
 }
 .submit-question:disabled {
   background: var(--bg);
@@ -1350,8 +1351,8 @@ blockquote cite {
   cursor: not-allowed;
 }
 .question-list {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   padding: 35px 22px 50px;
   background: var(--bg);
@@ -1366,7 +1367,7 @@ blockquote cite {
 }
 .question-list article > p {
   margin: 8px 0;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 18px;
 }
 .question-list article > button {
@@ -1377,8 +1378,8 @@ blockquote cite {
 
 /* My Heartland */
 .profile-hero {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   padding: 42px 22px;
   background: var(--bg);
@@ -1392,7 +1393,7 @@ blockquote cite {
   border: 1px solid var(--ink);
   border-radius: 0;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 23px;
 }
 .profile-hero h1 {
@@ -1401,12 +1402,12 @@ blockquote cite {
 }
 .profile-hero > p:last-child {
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 16px;
 }
 .profile-stats {
-  --bg: var(--pair-bg);
-  --ink: var(--pair-ink);
+  --bg: var(--white);
+  --ink: var(--black);
   color: var(--ink);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1420,7 +1421,7 @@ blockquote cite {
   border-right: 1px solid var(--ink);
 }
 .profile-stats strong {
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 30px;
   font-weight: 400;
 }
@@ -1451,7 +1452,7 @@ blockquote cite {
   font-size: 23px;
 }
 .my-sections article button > strong {
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 20px;
   font-weight: 400;
 }
@@ -1459,14 +1460,14 @@ blockquote cite {
   margin: -8px 0 14px 30px;
   overflow: hidden;
   color: var(--ink);
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 14px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .schedule-preview {
-  --bg: var(--pair-ink);
-  --ink: var(--pair-bg);
+  --bg: var(--black);
+  --ink: var(--white);
   color: var(--ink);
   padding: 36px 22px 48px;
   background: var(--bg);
@@ -1493,7 +1494,7 @@ blockquote cite {
 }
 .schedule-line strong {
   margin-top: auto;
-  font-family: "Inter Tight", system-ui, sans-serif;
+  font-family: "Telegraf", "Inter Tight", system-ui, sans-serif;
   font-size: 28px;
   font-weight: 400;
 }
@@ -1520,51 +1521,39 @@ blockquote cite {
   }
 }
 
-/* ===== Heartland brand: strict duotone ===== */
-/* Brand Farver – Duotone kombinationer. Each screen uses ONE pair: background + ink. */
-.duo-a {
-  --pair-bg: #275c4c;
-  --pair-ink: #2dea8b;
-  --duo: url(#hl-duo-a);
+/* ===== Heartland visual identity (Præsentation 2027) =====
+   UI: neutral grey / white / black. Brand colours are accents and blocks.
+   Duotone is reserved for brand moments: loading screen and welcome screen. */
+:root {
+  --grey: #eff0f3;
+  --white: #ffffff;
+  --black: #0b0b0c;
+  --duo: none;
 }
-.duo-b {
-  --pair-bg: #ffc0f0;
-  --pair-ink: #752a64;
-  --duo: url(#hl-duo-b);
+.app-shell {
+  --bg: var(--grey);
+  --ink: var(--black);
 }
-.duo-c {
-  --pair-bg: #0f216a;
-  --pair-ink: #207dff;
-  --duo: url(#hl-duo-c);
+/* Livlig / Frisk / Rolig per colour family */
+.accent-green {
+  --accent: #2dea8b;
+  --accent-soft: #b1ffd8;
+  --accent-deep: #275c4c;
 }
-.duo-d {
-  --pair-bg: #ff9fa0;
-  --pair-ink: #801c0d;
-  --duo: url(#hl-duo-d);
+.accent-pink {
+  --accent: #ee5bca;
+  --accent-soft: #ffc0f0;
+  --accent-deep: #752a64;
 }
-.duo-e {
-  --pair-bg: #000000;
-  --pair-ink: #ee5bca;
-  --duo: url(#hl-duo-e);
+.accent-blue {
+  --accent: #207dff;
+  --accent-soft: #d2d0ff;
+  --accent-deep: #0f216a;
 }
-.duo-f {
-  --pair-bg: #b1ffd8;
-  --pair-ink: #275c4c;
-  --duo: url(#hl-duo-f);
-}
-.duo-g {
-  --pair-bg: #ffffff;
-  --pair-ink: #207dff;
-  --duo: url(#hl-duo-g);
-}
-.duo-h {
-  --pair-bg: #752a64;
-  --pair-ink: #ffc0f0;
-  --duo: url(#hl-duo-h);
-}
-[class*="duo-"] {
-  --bg: var(--pair-bg);
-  --ink: var(--pair-ink);
+.accent-red {
+  --accent: #ff4c33;
+  --accent-soft: #ff9fa0;
+  --accent-deep: #801c0d;
 }
 .app-shell {
   color: var(--ink);
@@ -1572,16 +1561,17 @@ blockquote cite {
 }
 
 @layer base {
+  /* Telegraf hierarchy: Medium = titles, nav, key figures; Regular = subheads; Light = running text */
   h1,
   h2,
   h3,
   blockquote {
-    font-weight: 600;
-    letter-spacing: -0.035em;
+    font-weight: 500;
+    letter-spacing: -0.03em;
   }
   body {
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-weight: 400;
+    letter-spacing: -0.005em;
   }
   ::selection {
     background: var(--ink);
@@ -1594,11 +1584,16 @@ blockquote cite {
 }
 
 /* emphasis = ink block, not a third colour */
-.home-hero h1 em,
 .welcome-copy h1 em {
   padding: 0 0.06em;
   background: var(--ink);
   color: var(--bg);
+  font-style: normal;
+}
+.home-hero h1 em {
+  padding: 0 0.06em;
+  background: var(--black);
+  color: var(--accent);
   font-style: normal;
 }
 .talk-index {
@@ -1639,9 +1634,9 @@ blockquote cite {
   font-weight: 700;
 }
 
-/* photos: duotone mapped to the pair, never full colour */
+/* photos: full colour, natural (Billedstil) */
 .app-shell img {
-  filter: var(--duo);
+  filter: none;
 }
 
 /* ===== Logo lockup ===== */
@@ -1701,8 +1696,11 @@ blockquote cite {
   margin-bottom: -43px;
 }
 
-/* ===== Welcome ===== */
+/* ===== Welcome: brand moment, duotone green ===== */
 .welcome-screen {
+  --bg: #275c4c;
+  --ink: #2dea8b;
+  background: var(--bg);
   display: flex;
   flex-direction: column;
 }
@@ -1904,4 +1902,87 @@ blockquote cite {
 .home-hero h1,
 .welcome-copy > h1 {
   line-height: 1.02;
+}
+
+/* running text in Light, per the typographic hierarchy */
+.page-intro .lead,
+.essay-block p,
+.story-intro p,
+.era-context,
+.detail-copy > p:not(.kicker),
+.context-panel > p:not(.kicker),
+.glossary-content > div p,
+.big-questions button p,
+.home-hero > p:last-of-type {
+  font-weight: 300;
+}
+.kicker,
+.card-label,
+.talk-meta {
+  font-weight: 500;
+}
+
+/* pills: buttons, tags and round icon buttons (website + typography slides) */
+.arrow-button.solid,
+.submit-question,
+.detail-actions button,
+.tag-section span,
+.featured-image span,
+.editorial-image span,
+.era-image span,
+.dashboard-card.tall > span,
+.search-field,
+.closer-tabs button.active {
+  border-radius: 999px;
+}
+.arrow-button i,
+.header-back,
+.talk-card > i,
+.era-rail button i {
+  border-radius: 50%;
+}
+.featured-image span,
+.editorial-image span,
+.era-image span {
+  margin: 10px;
+  padding: 7px 12px;
+}
+.closer-tabs button.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+.dashboard-card.tall > span {
+  margin: 10px;
+  background: var(--white);
+  color: var(--black);
+}
+.dashboard-card {
+  background: var(--white);
+  border: 0;
+}
+.concept-scroll button,
+.character-deck button {
+  border: 0;
+  background: var(--white);
+}
+.literary-section .character-deck button,
+.question-list article {
+  background: transparent;
+  border-color: var(--ink);
+}
+.topbar {
+  background: var(--grey);
+}
+.bottom-nav {
+  background: var(--white);
+  border-top: 0;
+}
+.bottom-nav button.active {
+  font-weight: 600;
+}
+
+/* "5. element" bands: Frisk shapes on the Livlig block */
+.ink-band {
+  --bg: var(--accent);
+  --ink: var(--accent-soft);
 }
