@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { DuotoneFilters, InkblotCanvas, Lockup, PairKey, Splash } from "./brand";
 
 type Lang = "da" | "en";
 type Page =
@@ -37,6 +38,20 @@ const images = {
     "https://images.unsplash.com/photo-1705944601101-fdb49dbf884c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=88&w=1000",
   wallpaper:
     "https://images.unsplash.com/photo-1690268798033-ae52e4e57db6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=88&w=1000",
+};
+
+/* One brand duotone per screen (Brand Farver – Duotone kombinationer). */
+const pagePair: Record<Page, PairKey> = {
+  welcome: "a",
+  home: "a",
+  explore: "c",
+  timeline: "d",
+  ibsen: "b",
+  yellow: "e",
+  glossary: "g",
+  programme: "f",
+  questions: "h",
+  my: "b",
 };
 
 const ui = {
@@ -590,6 +605,16 @@ export default function App() {
   const [draft, setDraft] = useState("");
   const [questions, setQuestions] = useState<{ talk: number; text: string }[]>([]);
   const [themeAnswer, setThemeAnswer] = useState<number | null>(null);
+  const [splashDone, setSplashDone] = useState(false);
+  const pair = pagePair[page];
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.forEach((c) => c.startsWith("duo-") && root.classList.remove(c));
+    root.classList.add(`duo-${pair}`);
+  }, [pair]);
+  useEffect(() => {
+    document.documentElement.lang = lang ?? "da";
+  }, [lang]);
   const language = lang ?? "da";
   const t = ui[language];
 
@@ -650,9 +675,8 @@ export default function App() {
       <button className="header-back" onClick={goBack} aria-label={t.back}>
         <Icon name="back" size={18} />
       </button>
-      <button className="heartland-mark" onClick={() => go("home")} aria-label="Heartland home">
-        <span>HEART</span>
-        <span>LAND</span>
+      <button onClick={() => go("home")} aria-label="Heartland home">
+        <Lockup />
       </button>
       <div className="edition">BETWEEN THE LINES · 2027</div>
       <LanguageSwitch />
@@ -664,6 +688,9 @@ export default function App() {
       <p className="kicker">{index} · HEARTLAND 2027</p>
       <h1>{title}</h1>
       {intro && <p className="lead">{intro}</p>}
+      <div className="ink-band">
+        <InkblotCanvas seed={index.length * 7 + title.length} />
+      </div>
     </div>
   );
 
@@ -702,21 +729,27 @@ export default function App() {
 
   const Welcome = () => (
     <section className="welcome-screen">
-      <img src={images.hero} alt="A reader framed by a window" />
-      <div className="welcome-overlay" />
-      <div className="welcome-head">
-        <div className="heartland-mark light">
-          <span>HEART</span>
-          <span>LAND</span>
+      <div className="welcome-stage">
+        <InkblotCanvas
+          params={() => {
+            const stage = document.querySelector(".welcome-stage");
+            const w = stage?.clientWidth ?? 390;
+            const h = stage?.clientHeight ?? 500;
+            return { clear: [[w / 2, h / 2, w * 0.44, 58]] };
+          }}
+        />
+        <div className="welcome-head">
+          <div className="edition">BETWEEN THE LINES · 2027</div>
+          <LanguageSwitch full />
         </div>
-        <LanguageSwitch light full />
+        <Lockup />
       </div>
       <div className="welcome-copy">
         <p className="kicker">{t.dates}</p>
         <h1>
-          BETWEEN
+          Between
           <br />
-          THE <em>LINES</em>
+          the <em>lines</em>
         </h1>
         <p className="danish-title">Mellem linjerne</p>
         <div className="welcome-theme">
@@ -733,7 +766,6 @@ export default function App() {
           {t.enter}
         </ArrowButton>
       </div>
-      <p className="photo-credit">Photo · Yuri Efremov / Unsplash</p>
     </section>
   );
 
@@ -752,6 +784,9 @@ export default function App() {
             ? "historier om magt, frihed og hvem vi kan være."
             : "stories about power, freedom and who we can become."}
         </p>
+        <div className="ink-band">
+          <InkblotCanvas seed={3} />
+        </div>
       </div>
 
       <div className="featured-talk">
@@ -1636,7 +1671,16 @@ export default function App() {
       : page;
 
   return (
-    <div className="app-shell">
+    <div className={`app-shell duo-${pair}`}>
+      <DuotoneFilters />
+      {!splashDone && (
+        <Splash
+          from="e"
+          to={pagePair.welcome}
+          label={language === "da" ? "Indlæser" : "Loading"}
+          onDone={() => setSplashDone(true)}
+        />
+      )}
       {page !== "welcome" && <Header />}
       <main>{pages[page]}</main>
       {page !== "welcome" && (
