@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-78 -106 156 110" style="color:#0B0B0C">
+<defs>
+<clipPath id="hlL"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z"/></clipPath>
+<clipPath id="hlR"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="scale(-1 1)"/></clipPath>
+<clipPath id="hlBelow"><rect x="-100" y="-85.6" width="200" height="200"/></clipPath>
+<clipPath id="hlZL"><rect x="-28.9" y="-140" width="28.9" height="54.4"/></clipPath>
+<clipPath id="hlZR"><rect x="0" y="-140" width="28.9" height="54.4"/></clipPath>
+<mask id="hlGaps" maskUnits="userSpaceOnUse" x="-100" y="-150" width="200" height="200">
+<rect x="-100" y="-150" width="200" height="200" fill="#fff"/>
+<rect x="-28.9" y="-140" width="57.8" height="54.4" fill="#000"/>
+<g clip-path="url(#hlZL)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="scale(-1 1)" fill="#fff"/></g>
+<g clip-path="url(#hlZR)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" fill="#fff"/></g>
+<g clip-path="url(#hlBelow)">
+<g clip-path="url(#hlR)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" fill="none" stroke="#000" stroke-width="6.4"/></g>
+<g clip-path="url(#hlL)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="scale(-1 1)" fill="none" stroke="#000" stroke-width="6.4"/></g>
+</g>
+</mask>
+</defs>
+<g fill="currentColor">
+<g mask="url(#hlGaps)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z"/><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="scale(-1 1)"/></g>
+<g clip-path="url(#hlL)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" transform="scale(-1 1)" stroke="currentColor" stroke-width="1.4"/></g>
+<g clip-path="url(#hlR)"><path d="M-5.89 0.00 L23.56 -61.73 A28.82 28.82 0 1 0 -28.90 -85.57 A28.82 28.82 0 1 0 -62.33 -38.64 Z" fill="none" stroke="currentColor" stroke-width="1.4"/></g>
+</g>
+</svg>

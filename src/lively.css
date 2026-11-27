@@ -1,0 +1,232 @@
+/* ===== Livelier scroll: colour blocks, ticker, reveal (deviates a little from the deck on purpose) ===== */
+:root {
+  --green: #2dea8b;
+  --green-l: #b1ffd8;
+  --green-d: #275c4c;
+  --pink: #ee5bca;
+  --pink-l: #ffc0f0;
+  --pink-d: #752a64;
+  --blue: #207dff;
+  --blue-l: #d2d0ff;
+  --blue-d: #0f216a;
+  --red: #ff4c33;
+  --red-l: #ff9fa0;
+  --red-d: #801c0d;
+}
+
+/* --- fixes: text that ended up the same colour as its background --- */
+.dashboard-card.tall {
+  background: var(--bg);
+}
+.literary-section .character-deck button.active {
+  background: var(--accent-soft);
+  color: var(--black);
+  border-color: var(--accent-soft);
+}
+.literary-section .character-deck button.active span {
+  color: var(--black);
+}
+.closer-tabs button.active,
+.wallpaper .closer-tabs button.active {
+  background: var(--accent);
+  color: var(--black);
+}
+
+/* --- colour blocks: each page walks through its colour family (Livlig / Frisk / Rolig) --- */
+.featured-talk,
+.fact-block,
+.preparation-box,
+.schedule-preview,
+.glossary-list article:has(.glossary-content) {
+  --bg: var(--accent-soft);
+  --ink: var(--black);
+  background: var(--bg);
+  color: var(--ink);
+}
+.glossary-list article:has(.glossary-content) {
+  margin: 0 -22px;
+  padding: 0 22px;
+}
+.home-literature,
+.big-questions,
+.literary-section,
+.literary-hero,
+.question-list,
+.profile-hero {
+  --bg: var(--accent-deep);
+  --ink: var(--accent-soft);
+  background: var(--bg);
+  color: var(--ink);
+}
+.era-detail blockquote,
+.context-panel,
+.profile-stats {
+  --bg: var(--accent);
+  --ink: var(--black);
+  background: var(--bg);
+  color: var(--ink);
+}
+.literary-section .character-deck button:not(.active),
+.question-list article {
+  border-color: var(--ink);
+}
+
+/* home dashboard: three different colour families side by side */
+.dashboard-card.orange {
+  --bg: var(--pink);
+  --ink: var(--black);
+}
+.dashboard-card.cream {
+  --bg: var(--blue-l);
+  --ink: var(--black);
+  background: var(--bg);
+  border: 0;
+}
+
+/* concept cards cycle through all four Frisk tints */
+.concept-scroll button,
+.concept-scroll button:nth-child(even) {
+  --ink: var(--black);
+  color: var(--black);
+  border: 0;
+}
+.concept-scroll button:nth-child(4n + 1) {
+  background: var(--green-l);
+}
+.concept-scroll button:nth-child(4n + 2) {
+  background: var(--pink-l);
+}
+.concept-scroll button:nth-child(4n + 3) {
+  background: var(--blue-l);
+}
+.concept-scroll button:nth-child(4n + 4) {
+  background: var(--red-l);
+}
+.concept-scroll button > span {
+  color: var(--black);
+}
+
+/* talk tags and day headings get colour */
+.tag-section span {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--black);
+}
+.day-heading span {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--black);
+}
+
+/* --- ticker band with the heart mark --- */
+.ticker {
+  overflow: hidden;
+  background: var(--black);
+  color: var(--accent);
+  border-block: 0;
+}
+.ticker-track {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 13px 0;
+  animation: ticker 28s linear infinite;
+}
+.ticker-track span {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.ticker-track img {
+  width: 20px;
+  height: auto;
+  flex: none;
+}
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- sections rise in as they scroll into view (where the browser supports it) --- */
+@supports (animation-timeline: view()) {
+  main section > *:not(.page-intro):not(.home-hero):not(.welcome-stage):not(.ticker) {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+  main section > * {
+    animation: none !important;
+  }
+}
+
+/* ===== Top bar: logo left, pill language switch right ===== */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 64px;
+  padding: 0 16px;
+  border-bottom: 0;
+}
+.topbar .topbar-home {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+.topbar .hl-lockup {
+  font-size: 24px;
+  gap: 7px;
+}
+.topbar .hl-lockup svg {
+  width: 32px;
+}
+.topbar .header-back {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: 0;
+  background: var(--white);
+}
+.topbar .language-switch {
+  gap: 0;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 13px;
+}
+.topbar .language-switch i {
+  display: none;
+}
+.topbar .language-switch button {
+  min-width: 42px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s;
+}
+.topbar .language-switch button.active {
+  background: var(--black);
+  color: var(--white);
+}
