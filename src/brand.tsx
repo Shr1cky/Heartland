@@ -560,3 +560,35 @@ export function Splash({
     </div>
   );
 }
+
+/* The joined mark as a standalone SVG string (for cheap repeated use as an <img>). */
+export function markDataUri(color: string) {
+  const H = HEART;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-78 -106 156 110"><defs><clipPath id="l"><path d="${H}"/></clipPath><clipPath id="r"><path d="${H}" transform="scale(-1 1)"/></clipPath><clipPath id="b"><rect x="-100" y="-85.6" width="200" height="200"/></clipPath><clipPath id="zl"><rect x="-28.9" y="-140" width="28.9" height="54.4"/></clipPath><clipPath id="zr"><rect x="0" y="-140" width="28.9" height="54.4"/></clipPath><mask id="g" maskUnits="userSpaceOnUse" x="-100" y="-150" width="200" height="200"><rect x="-100" y="-150" width="200" height="200" fill="#fff"/><rect x="-28.9" y="-140" width="57.8" height="54.4" fill="#000"/><g clip-path="url(#zl)"><path d="${H}" transform="scale(-1 1)" fill="#fff"/></g><g clip-path="url(#zr)"><path d="${H}" fill="#fff"/></g><g clip-path="url(#b)"><g clip-path="url(#r)"><path d="${H}" fill="none" stroke="#000" stroke-width="6.4"/></g><g clip-path="url(#l)"><path d="${H}" transform="scale(-1 1)" fill="none" stroke="#000" stroke-width="6.4"/></g></g></mask></defs><g fill="${color}"><g mask="url(#g)"><path d="${H}"/><path d="${H}" transform="scale(-1 1)"/></g><g clip-path="url(#l)"><path d="${H}" transform="scale(-1 1)" stroke="${color}" stroke-width="1.4"/></g><g clip-path="url(#r)"><path d="${H}" fill="none" stroke="${color}" stroke-width="1.4"/></g></g></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+/* Stand-in for a photo that fails to load: brand tint with the mark in the deep colour. */
+export function photoPlaceholder(bg: string, ink: string) {
+  const mark = markDataUri(ink);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 300"><rect width="400" height="300" fill="${bg}"/><image href="${mark}" xlink:href="${mark}" x="160" y="122" width="80" height="56"/></svg>`;
+  return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
+/* Scrolling band of festival lines separated by the heart mark. */
+export function Ticker({ items, color }: { items: string[]; color: string }) {
+  const mark = markDataUri(color);
+  const row = [...items, ...items];
+  return (
+    <div className="ticker" aria-hidden="true">
+      <div className="ticker-track">
+        {[...row, ...row].map((text, i) => (
+          <span key={i} style={{ display: "contents" }}>
+            <span>{text}</span>
+            <img src={mark} alt="" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}

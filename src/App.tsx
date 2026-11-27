@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { InkblotCanvas, Lockup, Splash } from "./brand";
+import { InkblotCanvas, Lockup, photoPlaceholder, Splash, Ticker } from "./brand";
 
 type Lang = "da" | "en";
 type Page =
@@ -42,6 +42,12 @@ const images = {
 
 /* Brand colour family per screen: Livlig accent, Frisk tint, Rolig deep (Præsentation 2027 – Farvepalette). */
 type Accent = "green" | "pink" | "blue" | "red";
+const accentHex: Record<Accent, string> = {
+  green: "#2DEA8B",
+  pink: "#EE5BCA",
+  blue: "#207DFF",
+  red: "#FF4C33",
+};
 const pageAccent: Record<Page, Accent> = {
   welcome: "green",
   home: "green",
@@ -608,6 +614,21 @@ export default function App() {
   const [themeAnswer, setThemeAnswer] = useState<number | null>(null);
   const [splashDone, setSplashDone] = useState(false);
   const accent = pageAccent[page];
+  // a photo that fails to load becomes a brand-coloured block instead of a broken image
+  useEffect(() => {
+    const onError = (event: Event) => {
+      const img = event.target;
+      if (!(img instanceof HTMLImageElement) || img.dataset.placeholder) return;
+      const cs = getComputedStyle(img);
+      img.dataset.placeholder = "1";
+      img.src = photoPlaceholder(
+        cs.getPropertyValue("--accent-soft").trim() || "#EFF0F3",
+        cs.getPropertyValue("--accent-deep").trim() || "#0B0B0C",
+      );
+    };
+    document.addEventListener("error", onError, true);
+    return () => document.removeEventListener("error", onError, true);
+  }, []);
   useEffect(() => {
     document.documentElement.lang = lang ?? "da";
   }, [lang]);
@@ -679,6 +700,11 @@ export default function App() {
     </header>
   );
 
+  const tickerItems =
+    language === "da"
+      ? ["Between the lines", "Mellem linjerne", t.theme, "10.–12. juni 2027", "Egeskov"]
+      : ["Between the lines", "Mellem linjerne", t.theme, "10–12 June 2027", "Egeskov"];
+
   const PageIntro = ({ index, title, intro }: { index: string; title: string; intro?: string }) => (
     <div className="page-intro">
       <p className="kicker">{index} · HEARTLAND 2027</p>
@@ -688,6 +714,12 @@ export default function App() {
         <InkblotCanvas seed={index.length * 7 + title.length} />
       </div>
     </div>
+  );
+  const PageTop = (props: { index: string; title: string; intro?: string }) => (
+    <>
+      <PageIntro {...props} />
+      <Ticker items={tickerItems} color={accentHex[accent]} />
+    </>
   );
 
   const ArrowButton = ({
@@ -790,6 +822,7 @@ export default function App() {
           <InkblotCanvas seed={3} />
         </div>
       </div>
+      <Ticker items={tickerItems} color={accentHex[accent]} />
 
       <div className="featured-talk">
         <div className="card-label">
@@ -858,7 +891,7 @@ export default function App() {
 
   const Explore = () => (
     <section className="explore-page">
-      <PageIntro
+      <PageTop
         index="01"
         title={
           language === "da" ? "At læse køn mellem linjerne" : "Reading gender between the lines"
@@ -952,7 +985,7 @@ export default function App() {
     const era = timeline[selectedEra];
     return (
       <section className="timeline-page">
-        <PageIntro
+        <PageTop
           index="02"
           title={t.timeline}
           intro={
@@ -1284,7 +1317,7 @@ export default function App() {
     );
     return (
       <section className="glossary-page">
-        <PageIntro
+        <PageTop
           index="03"
           title={t.glossary}
           intro={
@@ -1442,7 +1475,7 @@ export default function App() {
     }
     return (
       <section className="programme-page">
-        <PageIntro
+        <PageTop
           index="04"
           title={t.programme}
           intro={
@@ -1487,7 +1520,7 @@ export default function App() {
     };
     return (
       <section className="questions-page">
-        <PageIntro
+        <PageTop
           index="05"
           title={language === "da" ? "Spørg mellem linjerne" : "Ask between the lines"}
           intro={
