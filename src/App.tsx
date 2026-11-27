@@ -689,13 +689,14 @@ export default function App() {
 
   const Header = () => (
     <header className="topbar">
-      <button className="header-back" onClick={goBack} aria-label={t.back}>
-        <Icon name="back" size={18} />
-      </button>
-      <button onClick={() => go("home")} aria-label="Heartland home">
+      {page !== "home" && (
+        <button className="header-back" onClick={goBack} aria-label={t.back}>
+          <Icon name="back" size={18} />
+        </button>
+      )}
+      <button className="topbar-home" onClick={() => go("home")} aria-label="Heartland home">
         <Lockup />
       </button>
-      <div className="edition">BETWEEN THE LINES · 2027</div>
       <LanguageSwitch />
     </header>
   );

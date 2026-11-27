@@ -178,3 +178,55 @@
     animation: none !important;
   }
 }
+
+/* ===== Top bar: logo left, pill language switch right ===== */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 64px;
+  padding: 0 16px;
+  border-bottom: 0;
+}
+.topbar .topbar-home {
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+}
+.topbar .hl-lockup {
+  font-size: 24px;
+  gap: 7px;
+}
+.topbar .hl-lockup svg {
+  width: 32px;
+}
+.topbar .header-back {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: 0;
+  background: var(--white);
+}
+.topbar .language-switch {
+  gap: 0;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--white);
+  font-size: 13px;
+}
+.topbar .language-switch i {
+  display: none;
+}
+.topbar .language-switch button {
+  min-width: 42px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s;
+}
+.topbar .language-switch button.active {
+  background: var(--black);
+  color: var(--white);
+}
